@@ -43,16 +43,6 @@
     </properties>
 
     <modules>
-        <module>pack-bom</module>
-        <module>pack-lang</module>
-        <module>pack-threadcontext</module>
-        <module>pack-log</module>
-        <module>pack-metrics</module>
-        <module>pack-utils</module>
-        <module>middle-redis</module>
-        <module>pack-idem</module>
-        <module>pack-idgen</module>
-        <module>pack-lock</module>
     </modules>
 
     <dependencies>
