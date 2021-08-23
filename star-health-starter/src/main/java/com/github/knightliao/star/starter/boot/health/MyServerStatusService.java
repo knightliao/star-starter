@@ -31,6 +31,7 @@ public class MyServerStatusService implements ApplicationListener<ContextRefresh
     private ApplicationContext applicationContext = null;
     private Thread hookThread = new Thread(this::shutdown);
     private boolean isStartup = false;
+    private int shutdownWaitTime = MyHealthConstants.SHUTDOWN_WAIT_TIME_SEC;
 
     @Override
     public void destroy() throws Exception {
@@ -44,11 +45,10 @@ public class MyServerStatusService implements ApplicationListener<ContextRefresh
         this.serverStatus.set(false);
 
         if (this.applicationContext != null) {
-            int waitTime = this.getShutdownWaitTime(this.applicationContext);
-            log.info("spring shutdown done! waitTime={}s", waitTime);
+            log.info("spring shutdown done! waitTime={}s", shutdownWaitTime);
 
             try {
-                Thread.sleep(waitTime * 1000L);
+                Thread.sleep(shutdownWaitTime * 1000L);
             } catch (InterruptedException ex) {
 
             }
@@ -73,6 +73,9 @@ public class MyServerStatusService implements ApplicationListener<ContextRefresh
             this.applicationContext = applicationContext;
             Runtime.getRuntime().addShutdownHook(this.hookThread);
             log.info("spring container start successful");
+
+            //
+            shutdownWaitTime = getShutdownWaitTime(applicationContext);
 
             //
             this.prehot();
