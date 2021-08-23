@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.github.knightliao.star.starter.boot.health.MyServerStatusService,\
+com.github.knightliao.star.starter.boot.health.helper.controller.MyGracefulRestController
