@@ -26,7 +26,7 @@
         <dependency>
             <groupId>com.github.knightliao.middle</groupId>
             <artifactId>pack-http</artifactId>
-            <version>0.1.10-SNAPSHOT</version>
+            <version>0.1.13-SNAPSHOT</version>
         </dependency>
 
         <dependency>
